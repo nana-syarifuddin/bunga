@@ -1,8 +1,19 @@
+import sys
 import streamlit as st
 import tensorflow as tf
 import numpy as np
 from PIL import Image
 from tensorflow.keras.applications.mobilenet_v2 import preprocess_input
+
+st.header("Informasi Lingkungan Python")
+st.write(f"Versi Python yang digunakan: **{sys.version}**")
+st.write(f"Major.Minor Python: **{sys.version_info.major}.{sys.version_info.minor}**")
+
+try:
+    import tensorflow as tf
+    st.write(f"Versi TensorFlow terinstal: **{tf.__version__}**")
+except ImportError:
+    st.error("TensorFlow TIDAK terinstal. Ada masalah dependensi.")
 
 # Load model yang sudah dilatih
 model = tf.keras.models.load_model('models/best_model.h5')
